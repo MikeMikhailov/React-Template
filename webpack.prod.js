@@ -6,7 +6,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-  entry: './src/index.jsx',
+  entry: './src/jsx/index.jsx',
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'index_bundle.js',
@@ -18,9 +18,6 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-react', '@babel/preset-env'],
-          },
         },
       },
       {
