@@ -1,7 +1,11 @@
 import React from 'react';
 
-function Heading() {
-  return <h1>Heading</h1>;
+function App() {
+  return (
+    <div className="container">
+      <h1>Heading</h1>
+    </div>
+  );
 }
 
-export default Heading;
+export default App;
