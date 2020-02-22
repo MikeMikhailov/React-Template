@@ -8,7 +8,7 @@ module.exports = {
     extensions: ['.js', '.jsx'],
   },
   devtool: 'source-map',
-  entry: './src/jsx/index.jsx',
+  entry: './src/index.jsx',
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'index_bundle.js',
