@@ -25,7 +25,7 @@ module.exports = {
       {
         test: /\.s?[ac]ss$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          { loader: MiniCssExtractPlugin.loader, options: { hmr: true } },
           { loader: 'css-loader', options: { url: false, sourceMap: true } },
           { loader: 'sass-loader', options: { sourceMap: true } },
         ],
@@ -47,7 +47,7 @@ module.exports = {
       template: './public/index.html', // source html
     }),
     new MiniCssExtractPlugin(),
-    new FaviconsWebpackPlugin('./public/logo.svg')
+    new FaviconsWebpackPlugin('./public/logo.svg'),
   ],
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
