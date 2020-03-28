@@ -2,6 +2,8 @@ const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
   resolve: {
@@ -24,9 +26,9 @@ module.exports = {
       {
         test: /\.s?[ac]ss$/,
         use: [
-          MiniCssExtractPlugin.loader,
-          { loader: 'css-loader', options: { url: false, sourceMap: false } },
-          { loader: 'sass-loader', options: { sourceMap: false } },
+          { loader: MiniCssExtractPlugin.loader, options: { esModule: true } },
+          { loader: 'css-loader', options: { esModule: true } },
+          { loader: 'sass-loader' },
         ],
       },
       {
@@ -39,6 +41,41 @@ module.exports = {
       },
     ],
   },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          parse: {
+            ecma: 2017,
+          },
+          compress: {
+            ecma: 5,
+            warnings: false,
+            inline: 2,
+          },
+          mangle: {
+            safari10: true,
+          },
+          output: {
+            ecma: 5,
+            ascii_only: true,
+            comments: false,
+          },
+        },
+        parallel: true,
+        cache: true,
+      }),
+      new OptimizeCSSAssetsPlugin({
+        cssProcessorOptions: {
+          map: {
+            inline: false,
+            annotation: true
+          }
+        }
+      })
+    ],
+  },
   plugins: [
     new HtmlWebPackPlugin({
       hash: true,
@@ -46,6 +83,6 @@ module.exports = {
       template: './public/index.html', // source html
     }),
     new MiniCssExtractPlugin(),
-    new FaviconsWebpackPlugin('./public/logo.svg')
+    new FaviconsWebpackPlugin('./public/logo.svg'),
   ],
 };

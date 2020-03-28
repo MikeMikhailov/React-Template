@@ -7,7 +7,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-  devtool: 'source-map',
+  devtool: 'eval-source-map',
   entry: './src/index.jsx',
   output: {
     path: path.join(__dirname, '/dist'),
@@ -26,8 +26,8 @@ module.exports = {
       {
         test: /\.s?[ac]ss$/,
         use: [
-          { loader: MiniCssExtractPlugin.loader, options: { hmr: true } },
-          { loader: 'css-loader', options: { url: false, sourceMap: true } },
+          { loader: MiniCssExtractPlugin.loader, options: { hmr: true, esModule: true } },
+          { loader: 'css-loader', options: { sourceMap: true, esModule: true } },
           { loader: 'sass-loader', options: { sourceMap: true } },
         ],
       },
