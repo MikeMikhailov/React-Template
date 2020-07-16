@@ -24,15 +24,14 @@ module.exports = {
         },
       },
       {
-        test: /\.s?[ac]ss$/,
+        test: /\.css$/,
         use: [
           { loader: MiniCssExtractPlugin.loader, options: { esModule: true } },
           { loader: 'css-loader', options: { esModule: true } },
-          { loader: 'sass-loader' },
         ],
       },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(png|jpg|gif|woff2?)$/,
         use: [
           {
             loader: 'file-loader',
