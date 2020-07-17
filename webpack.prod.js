@@ -13,7 +13,8 @@ module.exports = {
   entry: './src/index.jsx',
   output: {
     path: path.join(__dirname, '/dist'),
-    filename: 'index_bundle.js',
+    filename: '[name]_[hash].js',
+    publicPath: '/',
   },
   module: {
     rules: [

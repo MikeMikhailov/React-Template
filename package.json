@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --config webpack.dev.js --hot",
     "build": "webpack --config webpack.prod.js",
-    "start": "http-server ./dist -g",
+    "start": "servor dist index.html 8080",
     "prettier": "prettier --config ./.prettierrc.yml --write \"./src/**/*.js?(x)\"",
     "eslint": "eslint -c ./.eslintrc.yml \"./src/**/*.js?(x)\""
   },
@@ -41,7 +41,6 @@
     "favicons-webpack-plugin": "^3.0.1",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
-    "http-server": "^0.12.3",
     "js-beautify": "^1.11.0",
     "mini-css-extract-plugin": "^0.9.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
