@@ -7,6 +7,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  mode: 'development',
   devtool: 'eval-source-map',
   entry: './src/index.jsx',
   output: {

@@ -9,6 +9,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  mode: 'production',
   entry: './src/index.jsx',
   output: {
     path: path.join(__dirname, '/dist'),
