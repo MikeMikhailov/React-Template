@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -93,14 +93,13 @@ let config = {
     new CleanWebpackPlugin(),
     new CompressionPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new BundleAnalyzerPlugin()
+    // new BundleAnalyzerPlugin()
   ],
 };
 
 module.exports = (env, argv) => {
   if (argv.mode === 'development') {
     config = { ...config, mode: 'development', devtool: 'eval-source-map' };
-    config.plugins = config.plugins.slice(0, config.plugins.length - 1);
     config.performance.hints = false;
   } else {
     config.module.rules[1].use[1].options.sourceMap = false;
