@@ -1,5 +1,5 @@
 const path = require('path');
-const webpack = require('webpack')
+const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
@@ -24,7 +24,7 @@ let config = {
   module: {
     rules: [
       {
-        test: /\.jsx$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -33,7 +33,7 @@ let config = {
       {
         test: /\.css$/,
         use: [
-          { loader: MiniCssExtractPlugin.loader, options: {} },
+          { loader: MiniCssExtractPlugin.loader },
           { loader: 'css-loader', options: { sourceMap: true } },
         ],
       },
@@ -75,7 +75,7 @@ let config = {
   },
   devServer: {
     historyApiFallback: true,
-    contentBase: path.resolve(__dirname, './dist'),
+    static: true,
     open: true,
     compress: true,
     hot: true,
